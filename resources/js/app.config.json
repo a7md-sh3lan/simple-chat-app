@@ -1,0 +1,28 @@
+{
+  "title": "CHATTER",
+  "pageTitle" : "Sha'lan Chat",
+  "description": "",
+  "socket" : 
+    {
+       "port" : 6001,
+       "path" : "/socket.io"
+    },
+  "file" : "/file/",
+  "dashboard": {
+    
+  },
+  "chat" : {
+    "active_users" : "sessions/admin",
+    "pending_users" : "sessions",
+    "active_sessions" : "active-sessions",
+    "users_logs" : "log",
+    "start_session" : "session",
+    "convert_session" : "session/convert"
+  },
+  "login" : "/login",
+  "register" : "/register",
+  "csrf_cookies" : "/sanctum/csrf-cookie",
+  "logout" : "/logout"
+  
+  
+}
