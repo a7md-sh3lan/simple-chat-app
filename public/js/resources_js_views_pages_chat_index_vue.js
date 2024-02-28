@@ -2142,13 +2142,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return that.fetching = false;
     });
 
-    // new mssage from user
-    window.Echo.channel("Message").listen("MessageEvent", function (e) {
-      console.log(e);
-    });
-    window.Echo.channel(_app_config__WEBPACK_IMPORTED_MODULE_4__.title + "_" + "Message").listen("MessageEvent", function (data) {
-      console.log("HHHHHHHHHHHHHHHH");
-      console.log(data);
+    // // new mssage from user
+    // window.Echo.channel("Message").listen("MessageEvent", e => {
+    //   console.log(e);
+    // });
+    // window.Echo.channel(appConfig.title + "_" + "Message").listen(
+    //     "MessageEvent",
+    //     (data) => {
+    //       console.log("HHHHHHHHHHHHHHHH");
+    //       console.log(data);
+    //       that.newMessageFromUser(data);
+    //     }
+    // );
+
+    window.io.on('message', function (data) {
       that.newMessageFromUser(data);
     });
     var container = document.querySelector("#scrollElement .simplebar-content-wrapper");
@@ -2163,7 +2170,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     });
   },
   destroyed: function destroyed() {
-    window.Echo.leave(_app_config__WEBPACK_IMPORTED_MODULE_4__.title + "_" + "Message");
+    // window.Echo.leave(appConfig.title + "_" + "Message");
   }
 });
 

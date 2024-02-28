@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Encryption\Encrypter;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class MessageController extends Controller
 {
@@ -83,7 +84,8 @@ class MessageController extends Controller
         $message->created_at = $message->created_at->format('Y-m-d h:i A');
         $message->name = Auth::user()->name;
 
-        event(new MessageEvent($validatedData['content'], Auth::id(), $validatedData['receiver_id']));
+        // event(new MessageEvent($validatedData['content'], Auth::id(), $validatedData['receiver_id']));
+        Http::post('http://localhost:3001/message',['message' => $validatedData['content'],'sender_id' => Auth::id(), 'receiver_id' => $validatedData['receiver_id']]);
 
         return response()->json($message, 201);
     }

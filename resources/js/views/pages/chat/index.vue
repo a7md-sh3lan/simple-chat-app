@@ -238,18 +238,22 @@ export default {
         .all([that.getActiveUsers()])
         .finally(() => (that.fetching = false));
 
-    // new mssage from user
-    window.Echo.channel("Message").listen("MessageEvent", e => {
-  console.log(e);
- });
-    window.Echo.channel(appConfig.title + "_" + "Message").listen(
-        "MessageEvent",
-        (data) => {
-          console.log("HHHHHHHHHHHHHHHH");
-          console.log(data);
-          that.newMessageFromUser(data);
-        }
-    );
+    // // new mssage from user
+    // window.Echo.channel("Message").listen("MessageEvent", e => {
+    //   console.log(e);
+    // });
+    // window.Echo.channel(appConfig.title + "_" + "Message").listen(
+    //     "MessageEvent",
+    //     (data) => {
+    //       console.log("HHHHHHHHHHHHHHHH");
+    //       console.log(data);
+    //       that.newMessageFromUser(data);
+    //     }
+    // );
+
+    window.io.on('message', (data) => {
+      that.newMessageFromUser(data);
+    });
 
     var container = document.querySelector("#scrollElement .simplebar-content-wrapper");
     if (container != null)
@@ -270,7 +274,7 @@ export default {
   },
 
   destroyed() {
-    window.Echo.leave(appConfig.title + "_" + "Message");
+    // window.Echo.leave(appConfig.title + "_" + "Message");
   },
 };
 </script>

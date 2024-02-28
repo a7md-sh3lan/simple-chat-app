@@ -49,22 +49,24 @@ setAxiosInterceptors();
 import Echo from 'laravel-echo';
 window.io = require('socket.io-client')
 
-let echoConfig = {
-    broadcaster: 'socket.io',
-    host: window.location.hostname,
-    transports: ['websocket', 'polling', 'flashsocket'], // Fix CORS error!
-    debug: true
-};
+// let echoConfig = {
+//     broadcaster: 'socket.io',
+//     host: window.location.hostname,
+//     transports: ['websocket', 'polling', 'flashsocket'], // Fix CORS error!
+//     debug: true
+// };
 
-if (appConfig.socket.port != null)
-{
-    echoConfig['host'] = echoConfig.host +  ':' + appConfig.socket.port;
-} else {
-    echoConfig['path'] = appConfig.socket.path;
-}
+// if (appConfig.socket.port != null)
+// {
+//     echoConfig['host'] = echoConfig.host +  ':' + appConfig.socket.port;
+// } else {
+//     echoConfig['path'] = appConfig.socket.path;
+// }
 
-console.log(echoConfig);
+// console.log(echoConfig);
 
 
-window.Echo = new Echo(echoConfig);
+// window.Echo = new Echo(echoConfig);
+
+window.io = io("http://localhost:3001");
 

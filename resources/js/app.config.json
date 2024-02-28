@@ -4,8 +4,8 @@
   "description": "",
   "socket" : 
     {
-       "port" : 6001,
-       "path" : "/socket.io"
+       "port" : 3002,
+       "path" : ""
     },
   "file" : "/file/",
   "dashboard": {
